@@ -1,4 +1,4 @@
-Zasady ogólne
+﻿Zasady ogólne
 - potrzebny jest nowy projekt konsolowy o nazwie Reloaded
 - standardowo każde zadanie będzie realizowane w osobnym podfolderze (a zarazem namespace) w projekcie,
   chyba że w zadaniu będzie napisane inaczej
@@ -87,3 +87,4 @@ Zasady ogólne
 
 
 
+...
