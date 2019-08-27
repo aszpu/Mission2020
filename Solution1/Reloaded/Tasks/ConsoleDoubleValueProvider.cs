@@ -11,7 +11,7 @@ namespace Reloaded.Tasks
     // Patrząc od strony konkretnej implementacji
     // (a że narazie nie ma tu większego sensu robienie jakiegoś interfejsu i alternatywnych implementacji, to możemy przyjąć, że jest po prostu ta jedna klasa)
     // to będzie bardziej ConsoleDoubleValueProvider czyli na polskie - konsolowy dostarczacz wartości typu double ;) ot taka propozycja.
-    public class ReadDouble
+    public class ConsoleDoubleValueProvider
     {
         public double Read(string enterValueMessage)
         {
