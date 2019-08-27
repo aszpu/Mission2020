@@ -21,7 +21,7 @@ namespace Reloaded.Tasks.Task15
                 Radius = 10
             };
 
-            var scale = new ReadDouble();
+            var scale = new ConsoleDoubleValueProvider();
             var factor = scale.Read("Enter factor: ");
 
             rectangle.Scale(factor);
