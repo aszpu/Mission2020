@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Reloaded.Tasks
 {
+    // Tutaj można się zastanowić nad lepszą nazwą.
+    // Patrząc od strony abstrakcji to rzeczywiście jest ReadDouble albo może bardziej DoubleReader czy nawet DoubleValueProvider
+    // Patrząc od strony konkretnej implementacji
+    // (a że narazie nie ma tu większego sensu robienie jakiegoś interfejsu i alternatywnych implementacji, to możemy przyjąć, że jest po prostu ta jedna klasa)
+    // to będzie bardziej ConsoleDoubleValueProvider czyli na polskie - konsolowy dostarczacz wartości typu double ;) ot taka propozycja.
     public class ReadDouble
     {
         public double Read(string enterValueMessage)

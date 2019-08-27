@@ -13,7 +13,7 @@ namespace Reloaded.Tasks.Task15
 
         public void Scale(double factor)
         {
-            Radius = Radius * factor;
+            Radius = Radius * factor; // da się też tak: Radius *= factor; - mnoży lewy operand przez prawy i przypisuje wartość do lewego
         }
     }
 }
