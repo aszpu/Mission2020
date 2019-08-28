@@ -97,5 +97,5 @@
 	Zserializowaną wartość zapisz do pliku tekstowego.
 	Wejdź do pliku i zobacz co się zapisało.
 
-	...
+	
 
