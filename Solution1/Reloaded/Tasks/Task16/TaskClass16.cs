@@ -74,13 +74,12 @@ namespace Reloaded.Tasks.Task16
 
             for (int i = 0; i < circleList.Count; i++)
             {
-                circleList[i].Radius *= Factor;
+                circleList[i].Scale(Factor);
             }
 
             for (int i = 0; i < rectangleList.Count; i++)
             {
-                rectangleList[i].Height *= Factor;
-                rectangleList[i].Width *= Factor;
+                rectangleList[i].Scale(Factor);
             }
             
             Console.ReadKey();
