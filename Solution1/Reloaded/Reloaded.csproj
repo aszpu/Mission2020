@@ -57,6 +57,7 @@
     <Compile Include="Tasks\Task15\Rectangle.cs" />
     <Compile Include="Tasks\Task15\TaskClass15.cs" />
     <Compile Include="Tasks\Task16\Circle.cs" />
+    <Compile Include="Tasks\Task16\ConstructorAndInstantiationExamples.cs" />
     <Compile Include="Tasks\Task16\Rectangle.cs" />
     <Compile Include="Tasks\Task16\TaskClass16.cs" />
     <Compile Include="Tasks\Task1\TaskClass1.cs" />
