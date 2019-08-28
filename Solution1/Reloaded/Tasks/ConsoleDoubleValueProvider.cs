@@ -28,7 +28,7 @@ namespace Reloaded.Tasks
                     correctData = true;
                     Console.WriteLine("");
                 }
-                else { Console.WriteLine("Enter correct value (double)!" + Environment.NewLine); }
+                else { Console.WriteLine("Enter correct value (type: double)!" + Environment.NewLine); }
             }
             return parsed;
         }
