@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reloaded.Tasks.Task16
 {
@@ -25,7 +22,6 @@ namespace Reloaded.Tasks.Task16
                 new Point(3324123, 323),
                 new Point(Double.MaxValue, 0),
             };
-
         }
     }
 

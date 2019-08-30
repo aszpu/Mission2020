@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reloaded.Tasks.Task16
 {
-    class TaskClass16
+    public class TaskClass16
     {
         public const double Factor = 7.789;
 
