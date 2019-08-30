@@ -78,7 +78,7 @@ namespace Reloaded
             task15.Test();
 */
             var task16 = new TaskClass16();
-            task16.Test();
+            task16.Test2();
 
         }
     }
