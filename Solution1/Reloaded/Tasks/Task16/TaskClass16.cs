@@ -8,7 +8,7 @@ namespace Reloaded.Tasks.Task16
 {
     public class TaskClass16
     {
-        public const double Factor = 7.789;
+        public const double Factor = 8.888;
 
         public void Test()
         {
