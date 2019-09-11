@@ -1,4 +1,4 @@
-﻿Zasady ogólne
+Zasady ogólne
 - potrzebny jest nowy projekt konsolowy o nazwie Reloaded
 - standardowo każde zadanie będzie realizowane w osobnym podfolderze (a zarazem namespace) w projekcie,
   chyba że w zadaniu będzie napisane inaczej
@@ -132,6 +132,84 @@
 		metoda ObliczWartosc przy podaniu parametru x równego np. 3 powinna zwrócić wynik równy 18
 		metoda ObliczMiejsceZerowe zwróci 1.2
 
+16d. Napisz klasę RichText. Cel jest taki żeby ta klasa pozwalała ustawić dowolny tekst i skonfigurować jakieś różne sposoby jego wyświetlania i żeby pozwalała go na koniec wyświetlić.
+     
+	 Np. takie coś:
+	 var txt = new RichText("Piotr");
+	 txt.Show();
+	 powinno wyświetlić:
+		Piotr
+
+	 ale takie coś:
+	 var txt = new RichText("Piotr");
+	 txt.LetterSeparator = "-";
+	 txt.LetterCase = LetterCaseType.Upper;
+	 txt.Underline = true;
+	 txt.ReverseOrder = true;
+	 txt.Color = ConsoleColor.Red;
+	 txt.Show();
+	 powinno wyświetlić na czerwono taki napis:
+		R-T-O-I-P
+		---------
+
+	Czyli cel jest taki żeby napisać klasę RichText z takimi property:
+	- Text
+	- LetterSeparator - separator, który podczas wyświetlania zostanie użyty od odzielenia od siebie liter
+	- LetterCase typu LetterCaseType (enum z opcjami Original, Upper, Lower) - informacja czy wyświetlany tekst ma być z oryginalną wielkością liter czy może ma być wielkimi czy małymi literami
+	- Underline - czy wyświetlić dodatkową linię pod napisem długości takiej samej jak napis
+	- ReverseOrder - czy litery mają być wypisane w odwrotnej kolejności
+	- Color - kolor w jakim będzie wyświetlony tekst
+	oraz metodę:
+	- Show, która wyświetli ten przekazany w konstruktorze text z zastosowaniem wszystkich property
+
+	Przetestuj klasę RichText tworząc jedną instancję tej klasy i ustawiając dowolnie property, a następnie wywołując metodę Show.
+	Później zmień wartoś property Text i wywołaj metodę Show jeszcze raz. Później zmień jakieś property i wywołaj metodę Show.
+
+16e. Napisz klasę Vector i klasę VectorMath.
+     Klasa Vector ma mieć takie cechy: X, Y, Z
+	 Klasa VectorMath ma mieć takie metody:
+	 Vector Sum(Vector a, Vector b); - suma wektorów
+	 Vector Sub(Vector a, Vector c); - róznica wektorów
+	 Vector CrossProduct(Vector a, Vector c); - iloczyn wektorowy
+	 double DotProduct(Vector a, Vector c); - iloczyn skalarny
+	 Vector Neg(Vector v); - wektor przeciwny
+	 double Length(Vector v); - długość wektora
+	 Vector Mul(Vector v, double factor); - wynik mnożenia wektora przez współczynnik
+	 W kalsie TestClass16e stwórz kilka wektorów oraz obiekt klasy VectorMath i potestuj na różne metody z VectorMath
+
+16fSandbox.
+	Zapoznaj się z klasami w katalogu Tasks/Task16fSandbox
+	(uwaga - ważne pojęcie - deserializacja - to jest zamiana ze stringa (w jakimś formacie - np. json, xml, csv) do jakiegoś typu - np. do jakiejś klasy; serializacja jest w drugą stronę)
+	Uruchom program. Zobacz jak działa - wpisz np. Poland
+	Program składa się z kilku elementów:
+	- klasa Task16fSandbox - główna klasa uruchamiająca
+	- klasa CountriesRestApiClient - klient api ze stronki https://rapidapi.com/apilayernet/api/rest-countries-v1 - po prostu w necie jest wystawione api, które można odpytywać o dane różnych państw, a klasa pełni funkcję strzelania właśnie do tego Api, pobierania odpowiedzi i deserializowania ich do klasy CountryDto
+	- klasa CountryDto - do tej klasy są deserializowane odpowiedzi zwracane z https://restcountries-v1.p.rapidapi.com
+	- klasa ConsoleCountriesSearchReportWriter - to jest klasa, której zadaniem jest wypisywanie raportu dotyczącego odnalezionych państwa na konsolę
+	Zadania:
+	0) Np. dla wyszukiwania poland, w raporcie wyświetla się:
+	   - Poland ze stolica w Warsaw.
+		  - ludnosc: 38.484 milionów
+		  - powierzchnia: 312679 km^2
+	   przerób żeby raport wyglądał tak:
+	   - POLAND
+	      - stolica: Warsaw
+		  - ludnosc: 38.484 milionów
+		  - powierzchnia: 312679 km^2
+	1) W raporcie wyświetla się tylko stolica, ludność i powierzchnia. Rozbuduj raport o długość i szerokość geograficzną.
+	2) Rozbuduj raport o gęstość zaludnienia wyliczony na podstawie populacji i powierzchni
+	3) Wyszukaj danych dla jakiegoś państwa, np. germany i w debugu podpatrz w klasie CountriesRestApiClient zmienną responseContent - zobaczysz, że jest tam taka informacja jak alpha3Code.
+	   Jak popatrzysz na klasę CountryDto to nie ma tam takiego property, do którego ta informacja miała by szansę się zdeserializować - dorób odpowiednie property.
+	   Rozbuduj raport o wartość tego property.
+	4) Wpisz w wyszukiwaniu niepełną nazwę państwa:
+	   ger
+	   Raport powinien zawierać 4 państwa: Algeria, Germany, Niger, Nigeria bo w nazwie jest ger, ale zawiera też Denmark i Norway
+	   Sprawdziłem, że dzieje się tak dlatego, że https://restcountries-v1.p.rapidapi.com przeszukuje także altSpelling, a Norwegia ma między innymi taką alternatywną (altSpelling) nazwę: Kongeriket Norge
+	   Sprawdź to sam: w debugu, po wpisaniu ger, zatrzymaj się w klasie CountriesRestApiClient i podpatrz zmienną responseContent - poszukaj tam altSpelling, np. dla Norwegii powinno być tam:
+	   "altSpellings":["NO","Norge","Noreg","Kingdom of Norway","Kongeriket Norge","Kongeriket Noreg"]
+	   Chciałbym żeby te nazwy nie były brane pod uwagę dlatego w zwracanym z metody GetCountries wyniku zwróć tylko te państwa, których główna nazwa zawiera wyszukiwany ciąg (to musi być case insensitive czyli niewrażliwe na wielkość znaków).
+
+
 17. To samo co w zadaniu 16, ale chodzi o utworzenie interfejsu IScalable z metodą Scale. Klasy Rectangle i Circle powinny implementować ten interfejs. Dzięki temu w metodzie testującej można wszystkie skalowalne kształty wstawić do jednej generycznej listy List<IScalable> i przeskalować wszystkie kształty w pojedynczej pętli.
     
 	!!! -> można tak zrobić bo kod skalujący (czyli pętla, która dla każdego elementu listy woła metodę Scale) nie jest zupełnie zainteresowany tym, że skaluje prostokąt, koło, odcinek czy cokolwiek innego. Ten kod jest zainteresowany wyłącznie skalowaniem (Scale) czegoś skalowalnego (IScalable).
@@ -154,5 +232,4 @@
 	Zserializowaną wartość zapisz do pliku tekstowego.
 	Wejdź do pliku i zobacz co się zapisało.
 
-	
 
