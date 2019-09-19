@@ -57,6 +57,10 @@
     <Compile Include="Tasks\Task15\Circle.cs" />
     <Compile Include="Tasks\Task15\Rectangle.cs" />
     <Compile Include="Tasks\Task15\TaskClass15.cs" />
+    <Compile Include="Tasks\Task16a\AutorKsiazki.cs" />
+    <Compile Include="Tasks\Task16a\GatunekKsiazki.cs" />
+    <Compile Include="Tasks\Task16a\Ksiazka.cs" />
+    <Compile Include="Tasks\Task16a\TaskClass16a.cs" />
     <Compile Include="Tasks\Task16fSandbox\ConsoleCountriesSearchReportWriter.cs" />
     <Compile Include="Tasks\Task16fSandbox\CountriesRestApiClient.cs" />
     <Compile Include="Tasks\Task16fSandbox\CountryDto.cs" />
