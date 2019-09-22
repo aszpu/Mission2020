@@ -22,6 +22,7 @@ using Reloaded.Tasks.Task15;
 using Reloaded.Tasks.Task16;
 using Reloaded.Tasks.Task16a;
 using Reloaded.Tasks.Task16b;
+using Reloaded.Tasks.Task16c;
 
 namespace Reloaded
 {
@@ -85,9 +86,11 @@ namespace Reloaded
             var task16a = new TaskClass16a();
             task16a.Test();
 
-*/
             var task16b = new TaskClass16b();
             task16b.Test();
+*/
+            var task16c = new TaskClass16c();
+            task16c.Test();
         }
     }
 }
