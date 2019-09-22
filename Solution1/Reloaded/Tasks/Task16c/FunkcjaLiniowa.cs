@@ -22,20 +22,10 @@ namespace Reloaded.Tasks.Task16c
         public double A { get; set; }
         public double B { get; set; }
 
-        public bool CzyRosnaca {
-            get
-            {
-                if (A > 0) { return true; } else { return false; }
-            }
-        }
-
-        public bool CzyMalejaca {
-            get
-            {
-                if (A < 0) { return true; } else { return false; }
-            }
-        }
-
+        public bool CzyRosnaca => A > 0;
+        public bool CzyMalejaca => A < 0;
+        
+        //poniżej wcześniejszy zapis property "Czy..."
         public bool CzyStala {
             get
             {
@@ -54,11 +44,11 @@ namespace Reloaded.Tasks.Task16c
             {
                 if (B == 0)
                 {
-                    return 0;
+                    throw (new Exception("Funkcja stała (y = " + B + ")!"));
                 }
                 else
                 {
-                    throw (new Exception("Funkcja stała! Nie ma miejsca zerowego."));
+                    throw (new Exception("Funkcja stała (y = "+B+")! Nie ma miejsca zerowego."));
                 }                
             }
             else
