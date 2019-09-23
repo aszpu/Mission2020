@@ -9,6 +9,8 @@ namespace Reloaded.Tasks.Task16d
     public class RichText
     {
         private readonly LetterCaseChanger _letterCaseChanger;
+        private readonly TextOrderReverser _textOrderReverser;
+        private readonly TextSeparator _textSeparator;
 
         public RichText()
         {
@@ -20,6 +22,8 @@ namespace Reloaded.Tasks.Task16d
             Text = text;
 
             _letterCaseChanger = new LetterCaseChanger();
+            _textOrderReverser = new TextOrderReverser();
+            _textSeparator = new TextSeparator();
         }
 
         public string Text { get; set; }
@@ -31,23 +35,24 @@ namespace Reloaded.Tasks.Task16d
 
         public void Show()
         {
-            Text = _letterCaseChanger.LetterCaseChange(Text, LetterCase);
+            var t = Text;
+
+            t = _letterCaseChanger.LetterCaseChange(t, LetterCase);
 
             if (ReverseOrder)
             {
-                var textReversedOrder = new TextOrderReverser();
-                Text = textReversedOrder.TextOrderReverse(Text);
+                
+                t = _textOrderReverser.TextOrderReverse(t);
             }
 
-            var textSeparated = new TextSeparator();
-            Text = textSeparated.Separate(Text, LetterSeparator);
+            t = _textSeparator.Separate(t, LetterSeparator);
 
             Console.ForegroundColor = Color;
-            Console.WriteLine(Text);
+            Console.WriteLine(t);
 
             if (Underline)
             {
-                for (int i = 0; i < Text.Length; i++)
+                for (int i = 0; i < t.Length; i++)
                 {
                     Console.Write("-");
                 }
