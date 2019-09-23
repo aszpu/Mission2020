@@ -8,6 +8,8 @@ namespace Reloaded.Tasks.Task16d
 {
     public class RichText
     {
+        private readonly LetterCaseChanger _letterCaseChanger;
+
         public RichText()
         {
 
@@ -16,6 +18,8 @@ namespace Reloaded.Tasks.Task16d
         public RichText(string text)
         {
             Text = text;
+
+            _letterCaseChanger = new LetterCaseChanger();
         }
 
         public string Text { get; set; }
@@ -27,8 +31,7 @@ namespace Reloaded.Tasks.Task16d
 
         public void Show()
         {
-            var textLetterCaseChanged = new LetterCaseChanger();
-            Text = textLetterCaseChanged.LetterCaseChange(Text, LetterCase);
+            Text = _letterCaseChanger.LetterCaseChange(Text, LetterCase);
 
             if (ReverseOrder)
             {
