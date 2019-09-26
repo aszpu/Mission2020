@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Examples\AsyncExample.cs" />
+    <Compile Include="Examples\AsyncExample2.cs" />
+    <Compile Include="Examples\AsyncExplanation.cs" />
+    <Compile Include="Examples\ClassMembersExplanation.cs" />
+    <Compile Include="Examples\DelegatesExplanation.cs" />
+    <Compile Include="Examples\DrawingExample.cs" />
+    <Compile Include="Examples\InterfaceExample.cs" />
+    <Compile Include="Examples\PersonExamples.cs" />
+    <Compile Include="Examples\PropertyExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\ConsoleDoubleValueProvider.cs" />
