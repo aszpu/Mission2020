@@ -58,13 +58,7 @@ namespace Reloaded.Tasks.Task16e
 
         public Vector Neg(Vector a)
         {
-            var negAB = new Vector()
-            {
-                X = -a.X,
-                Y = -a.Y,
-                Z = -a.Z
-            };
-            return negAB;
+            return new Vector(-a.X, -a.Y, -a.Z);
         }
 
         public double Length(Vector a)
