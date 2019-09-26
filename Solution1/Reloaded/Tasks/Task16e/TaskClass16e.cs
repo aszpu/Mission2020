@@ -16,13 +16,15 @@ namespace Reloaded.Tasks.Task16e
                 new Vector(3,4,5)
             };
 
-            var sum = new VectorMath().Sum(vectorList[0], vectorList[1]);
-            var sub = new VectorMath().Sub(vectorList[0], vectorList[1]);
-            var cross = new VectorMath().CrossProduct(vectorList[0], vectorList[1]);
-            var dotProd = new VectorMath().DotProduct(vectorList[0], vectorList[1]);
-            var neg = new VectorMath().Neg(vectorList[0]);
-            var length = new VectorMath().Length(vectorList[0]);
-            var mul = new VectorMath().Mul(vectorList[0], 3);
+            var vectorOperations = new VectorMath();
+
+            var sum = vectorOperations.Sum(vectorList[0], vectorList[1]);
+            var sub = vectorOperations.Sub(vectorList[0], vectorList[1]);
+            var cross = vectorOperations.CrossProduct(vectorList[0], vectorList[1]);
+            var dotProd = vectorOperations.DotProduct(vectorList[0], vectorList[1]);
+            var neg = vectorOperations.Neg(vectorList[0]);
+            var length = vectorOperations.Length(vectorList[0]);
+            var mul = vectorOperations.Mul(vectorList[0], 3);
 
             Console.ReadKey();
         }
