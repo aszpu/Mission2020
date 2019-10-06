@@ -11,13 +11,17 @@ namespace Reloaded.Tasks.Task16fSandbox
     {
         public void Write(CountryDto[] foundCountries) // zapis raportu na konsolę
         {
-            Console.WriteLine("Odanelziono następujące państwa:");
+            Console.WriteLine("Odnaleziono następujące państwa:");
 
             foreach (var country in foundCountries)
             {
-                Console.WriteLine($"- {country.Name} ze stolicą w {country.Capital}.");
+                Console.WriteLine($"- {country.Name.ToUpper()}");
+                Console.WriteLine($"  - stolica: {country.Capital}");
                 Console.WriteLine($"  - ludność: {country.Population / 1e6} milionów");
                 Console.WriteLine($"  - powierzchnia: {country.Area} km^2");
+                Console.WriteLine($"  - szerokość / długość geograficzna: {country.LatLng[0]} / {country.LatLng[1]}");
+                Console.WriteLine($"  - gęstość zaludnienia: {country.Population/country.Area} mieszkańców / km^2");
+                Console.WriteLine($"  - Kod Alpha-3 (zgodnie z ISO 3166): {country.Alpha3Code}");
             }
         }
     }

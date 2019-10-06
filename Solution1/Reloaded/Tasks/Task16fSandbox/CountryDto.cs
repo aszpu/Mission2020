@@ -25,5 +25,8 @@ namespace Reloaded.Tasks.Task16fSandbox
 
         [DataMember(Name = "currencies")]
         public string[] Currencies { get; set; }
+
+        [DataMember(Name = "alpha3Code")]
+        public string Alpha3Code { get; set; }
     }
 }

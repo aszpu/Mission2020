@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -13,13 +14,32 @@ namespace Reloaded.Tasks.Task16fSandbox
         {
             var query = $"name/{countryName}";
             var countries = await GetData<CountryDto[]>(query);
+            
+            // nie podoba mi się ten kod, ale inaczej nie dałem rady... ;/
+            var countriesTemp = new CountryDto[countries.Length];
+            var j = 0;
+            for(int i = 0; i < countries.Length; i++)
+            {
+                if (countries[i].Name.ToUpper().Contains(countryName.ToUpper()))
+                {
+                    countriesTemp[j] = countries[i];
+                    j++;
+                }
+            }
 
-            if (countries.Length == 0)
+            var countriesCorrected = new CountryDto[j];
+            for(int i = 0; i < j; i++)
+            {
+                countriesCorrected[i] = countriesTemp[i];
+            }
+            // -----------------------------------------------------------
+            
+            if (countriesCorrected.Length == 0)
             {
                 throw new Exception($"Nie udało się odnaleźć informacji na temat państwa: {countryName}.");
             }
 
-            return countries;
+            return countriesCorrected;
         }
 
         private async Task<T> GetData<T>(string query)
@@ -38,7 +58,8 @@ namespace Reloaded.Tasks.Task16fSandbox
             // wysyłamy request (żądanie) i pobieramy response (odpowiedź) http.
             // oraz pobieramy zawartości odpowiedzi
 
-            var response = await client.SendAsync(request);
+            var responseTask = client.SendAsync(request);
+            var response = await responseTask;
             var responseContent = await response.Content.ReadAsStringAsync();
 
             // deserializujemy treść odpowiedzi do przekazanego typu generycznego T (odpowiedzi przyjeżdżają z https://restcountries-v1.p.rapidapi.com w formacie JSON)
