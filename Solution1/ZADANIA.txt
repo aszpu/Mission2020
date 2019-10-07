@@ -233,3 +233,126 @@ Zasady ogólne
 	Wejdź do pliku i zobacz co się zapisało.
 
 
+22. W task 22 zrealizuj kolejno poniższe podzadania:
+    1) Stwórz folder dla tego zadania i dodaj tam nie klasę tylko plik tekstowy o nazwie spaceship.txt. Kliknij z poziomu visual studio na ten plik prawym przyciskiem myszy. Wybierz properties. Następnie w "Copy to output directory" ustaw "Copy if newer" - dzięki temu podczas buildowania plik będzie się kopiował do folderu bin.
+       Dzięki temu w kodzie będzie można zaryć ścieżkę względną do tego pliku
+	2) Skopiuj do tego pliku następującą treść - dokładnie (łącznie ze spacjami) co jest pomiędzy liniami z minusów:
+-----------------------------------------------
+                                               
+                                               
+                                               
+                                               
+                                               
+                                               
+                ##  ##                         
+                  ##                           
+                  ##                           
+               # #  # #                        
+               #      #                        
+                                               
+               #      #                        
+                ##  ##                         
+                 ####                          
+                                               
+                  ##                           
+                  ##                           
+                                               
+                                               
+-----------------------------------------------
+    3) Napisz tymczasowy kod testowy, który wczyta zawartość tego pliku i wyświetli go na konsoli
+	3.1) Po wduszeniu przycisku wyczyść konsolę i wyświetl następujące informacje:
+	     - ile jest linijek w pliku
+		 - ile znaków jest w linijce (pod warunkiem, że w każdej jest tyle samo - jeżeli nie jest to rzuć wyjątek)
+		 - ile łącznie jest krzyżyków
+		 - ile łącznie jest spacji
+		 - ile łącznie jest krzyżyków, które po swojej lewej posiadają krzyżyk i po swojej prawej posiadają krzyżyk (w przykładzie spaceship odpowiedź powinna wynieść 2 bo w tej linijce gdzie są cztery krzyżyki #### te dwa środkowe spełniają ten warunek)
+    4) Zapoznaj się z kodem w DrawingExample, a także zapoznaj się z plikami spaceship.png i glider.gif dodanymi do repozytorium.
+	5) Spraw aby na podstawie zawartości wczytanego pliku na ekranie konsoli wyświetliła się ta zawartość ale narysowana w formie komórek/kwadratów tak jak to widać w pliku spaceship.png dodanym do repozytorium.
+	6) Przyjmij, że narysowana przez Ciebie macierz kwadratowych komórek dzieli się na komórki żywe (wybierz sobie kolor) i martwe (wybierz sobie inny kolor) i że komórki będą ożywać i umierać
+	   według opisanych niżej zasad. A więc musi być pętla, w której po każdym naciśnięciu przycisku zostanie wyliczony stan życia - to, które komórki żyją, a które nie i po takim wyliczeniu to co jest
+	   na ekranie musi wyrysować się na nowo prezentując nowy stan komórek. Stan życia komórek wczytany z pliku jest tylko stanem początkowym. Każde wduszenie przycisku liczy nowy stan dla każdej komórki i wyświetla nowe stany komórek.
+	7) A zasady życia są następujące:
+	   - Każda komórka posiada 8 komórek sąsiadujących - z lewej, prawej, z góry, z dołu, i po skosach
+	   - Zmiany stanów są następujące:
+	     - urodzenie: Każda martwa komórka, która w aktualnym kroku posiada 3 żywe komórki sąsiadujące w kolejnym kroku stanie się komórką żywą
+	     - śmierć przez odizolowanie: Każda żywa komórka, która w aktualnym kroku posiada zero lub jedną żywą komórkę umiera poprzez odizolowanie i w następnym kroku będzie martwa
+	     - śmierć przez uduszenie: Każda żywa komórka, która w swoim otoczeniu posiada 4 lub więcej żywych sąsiadujących komórek umiera przez uduszenie i w następnym kroku będzie martwa
+		 - przetrwanie: każda żywa komórka, która posiada dwie lub trzy żywe komórki sąsiadujące przetrwa bo ani nie jest odizolowana ani się nie udusi
+	   Przykładowo jeżeli stan początkowy wyglądał by tak:
+	   -----------
+	              
+	        #     
+	              
+       -----------
+	   to kolejny stan wyglądał by tak
+	   -----------
+	              
+	              
+	              
+       -----------
+	   czyli komórka bez sąsiadów umarła, natomiast taki stan:
+	   -----------
+	        ##    
+	        ##    
+	        ##    
+       -----------
+	   w kolejnym kroku da taki stan:
+	   -----------
+	        ##    
+	       #  #   
+	        ##    
+       -----------
+	   Dobrze to obrazuje animowany glider.gif dodany do repozytorium.
+	8) Zaimplementuj zasady życia z punktu 7) oraz pętlę, w której będą liczone nowe stany tak aby uzyskać efekt taki jak w glider.gif (oczywiście bez efektu przesuwania układu współrzędnych czyli jak glider doleci do krawędzi to trudno. Układ współrzędnych pozostaje statyczny).
+	9) Stwórz więcej plików tekstowych ze stanami początkowymi - spaceship.txt, glider.txt i inne wymyślone przez siebie.
+   10) Potestuj program.
+
+23. W trybie graficznym narysuj duży prostokąt - rozmiar prostokąta ma być losowy w jakimś zakresie - np. szerokość pomiędzy 400, a 600, wysokość pomiędzy 200, a 300. W środku prostokąta ma być koło o losowej średnicy pomiędzy 10, a 40
+    i losowej pozycji w obrębie prostokąta - musi mieścić się całe i mieć margines od krawędzi prostokąta conajmniej 20. Koło ma się poruszać z jakąś sensowną losową prędkością - sam przyjmij w jakim zakresie. Podczas dotknięcia krawędzi prostokąta koło ma się odbijać symetrycznie
+	tak jak kula bilardowa od krawędzi stołu. Przyjmujemy odbicie idealnie elastyczne czyli energia kinetyczna nie jest wytracana. Brak tarcia.
+	Podzadania:
+	1) Zamiast jednego koła (dysku) powinno pojawić się 5 dysków
+	2) Dyski powinny odbijać się także od siebie. Mówimy tutaj o zderzeniu idealnie sprężystym czyli energia kinetyczna nie jest w żaden sposób pochłaniana podczas zderzenia. Przyjmijmy, że dyski mają masę proporcjonalną do ich rozmiaru.
+	3) Tak zmodyfikuj kod żeby dyski otrzymywały losową gęstość materiału z zakresu od 4g/cm^3 do 16g/cm^3. Gęstość materiału powinna być reprezentowana kolorem dysku - np. 4g/cm^3 to kolor zielony, a 16g/cm^ to kolor czerwony - wszystko pomiędzy ma wynikać z liniowego gradientu pomiędzy tymi kolorami.
+	   Masa dysków powinna wynikać z gęstości i rozmiaru dysku. Przyjmij, że jeden pixel na ekranie reprezentuje jeden centymetr. Przyjmij, że wszystkie dyski mają grubość 2cm.
+	UWAGA - złośliwy trol w dowolnym momencie może sobie zażyczyć:
+	- zmiany marginesu z 20 na dowolną inną wartość ;)
+	- zmiany odsunięcia prostokąta od początku układu współrzędnych z punktu (100,100) na dowolną inną pozycję
+
+24. W trybie graficznym narysuj prostokąt o losowej szerokości i wysokości tak jak w zadaniu 23. Spraw aby na górze prostokąta czyli na długości całej górnej krawędzi pojawiały się małe białe kółka. Kółka mają opadać na dół imitując padający śnieg.
+    Podzadania:
+	1) Spraw żeby niektóre płatki śniegu opadały nieco szybciej, a inne nieco wolniej.
+	2) Spraw żeby płatki delikatnie dryfowały losowo lewo/prawo.
+	3) Spraw żeby wduszenie strzałki w lewo generowało wiatr wiejący z prawej do lewej, a strzałki w prawo z lewej do prawej.
+	   Kolejne wduszenie strzałki w tym samym kierunku powinno zwięszyć siłę wiatru - niech to będą 3 stopnie siły wiatru w każdym kierunku czyli: mocny lewy, średni lewy, słaby lewy, brak, słaby prawy, średni prawy, mocny prawy.
+	4) Spraw żeby wiatr, niektóre płatki porywał nieco mocniej niż inne - tzn. żeby nie było takiego nienaturalnego efektu, że wszystkie lecą z identyczną prędkością - niech będą minimalne róznice.
+
+25. Przygotuj kilka plików tekstowych z długim tekstem w kilku różnych językach - ściągnij choćby z wikipedii.
+    Napisz program, który poprosi o podanie ścieżki do katalogu z tymi plikami. 
+	Nazwy plików niech będą w formacie text.{culture}.txt czyli np.:
+	text.pl-PL.txt
+	text.en-US.txt
+	text.zh-HK.txt
+	Warto poczytać co to jest kultura (culture). Np. tutaj jest wykaz kultur http://www.codedigest.com/CodeDigest/207-Get-All-Language-Country-Code-List-for-all-Culture-in-C---ASP-Net.aspx
+	albo tutaj o klasie CultureInfo https://docs.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo?view=netframework-4.8 - jak widać w tym linku też jest kultura zaraz po docs.microsoft.com jest en-us.
+	W skrócie to jest taki format, który reprezentuje język i kraj. Np. en-US (angielski - Stany Zjednoczone), en-GB (angielski - Wielka Brytania), zh-HK (chiński, Hongkong). Od kultury zależy potem wyświetalnie daty, waluty, format liczb - np. w Polsce separatorem dziesiętnym jest przecinek, a w stanach kropka itd.
+	Do tego zadania jest Ci to zupełnie niepotrzebne ale tak tylko piszę żeby słowo kultura nie dziwiło ;)
+	Wracając do zadania - program ma wczytać wszystkie pliki ze wskazanego katalogu.
+	Ma utworzyć listę, a w liście ma przechowywać statystyki języka dla każdego kraju - przyda się więc klasa CultureLanguageStatistics.
+	I teraz o jakie statystyki chodzi - chciałbym mieć w nich informację ile było wystąpień każdego znaku. Chciałbym żeby te znaki były posortowane wedle liczby wystąpień od najczęściej występującego znaku do najrzadziej występującego.
+	Chciałbym dla każdego znaku mieć informację o ile rzadziej wystąpił od swojego częstszego sąsiada i o ile częściej wystąpił od swojego rzadszego sąsiada. Chciałbym też wiedzieć procentowo jaki stanowi udział w całym tekście.
+	No i takie statystyki niech się pokaża na ekranie dla każdego języka dla pierwszych czeterech najczęstszych znaków w każdym z języków.
+
+26. Przejdź do przygotowanego folderu Task26 z przygotowanymi klasami i zastosuj dobre praktyki programowania.
+    Wszystkie zadania realizuj poprzez skopiowanie klasy z zadania do nowej klasy z przyrostkiem Fixed - np. TaskClass26a - nie zmieniaj tej klasy - skopiuj ją (tzn. cały plik) i zmień nazwę pliku i klasy z TaskClass26a na TaskClass26aFixed - w tej nowej klasie dopiero zrób wersję poprawioną.
+	Dzięki temu będziesz miał porównanie pomiędzy złym, a dobrym kodem.
+    a) TaskClass26a
+	   - Wydziel powielony kod tworzący instancję klasy Person do nowej metody CreatePerson. Zauważ, że obecny powielony kod odpowiedzialny za tworzenie instancji klasy Person ma błąd i z imienia "dAgNa" zamiast zrobić "Dagna" robi "Pagna". 
+	     Przy takim powielaniu kodu o taki błąd bardzo łatwo. Zobacz o ile mniej błędogenny będzie kod po wydzieleniu metody CreatePerson.
+	   - Wydziel powielony kod wyświetlający dane osoby do nowej metody ShowPersonData.
+	b) TaskClass26a
+	   - Wydziel powielony kod metody Calculate
+	   - Zauważ, że po wydzieleniu kodu do metody Calculate w takiej pojedynczej linijce dalej jest fragment kodu, który też jest w ramach takiej jednej linijki powielony - wydziel go do metody o adekwatnej nazwie ;)
+	c) TaskClass26c
+	   - Wydziel powielony kod do metody TakeMoreThanValues
+
