@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Reloaded.Tasks.Task18
 {
-    public interface ISolid
+    public interface ITotalArea
     {
         double TotalArea { get; }
-        double Volume { get; }
     }
 }

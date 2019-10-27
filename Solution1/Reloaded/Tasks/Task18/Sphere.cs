@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reloaded.Tasks.Task18
 {
-    public class Sphere : ISolid
+    public class Sphere : ITotalArea, IVolume
     {
         public Sphere()
         {

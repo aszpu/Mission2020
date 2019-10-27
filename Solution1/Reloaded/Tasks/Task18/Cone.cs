@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reloaded.Tasks.Task18
 {
-    public class Cone : ISolid
+    public class Cone : ITotalArea, IVolume
     {
         public Cone()
         {

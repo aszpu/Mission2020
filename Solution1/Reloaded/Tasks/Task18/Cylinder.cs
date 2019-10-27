@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reloaded.Tasks.Task18
 {
-    public class Cylinder : ISolid
+    public class Cylinder : ITotalArea, IVolume
     {
         public Cylinder()
         {
