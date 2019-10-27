@@ -26,6 +26,7 @@ using Reloaded.Tasks.Task16c;
 using Reloaded.Tasks.Task16d;
 using Reloaded.Tasks.Task16e;
 using Reloaded.Tasks.Task16fSandbox;
+using Reloaded.Tasks.Task17;
 
 namespace Reloaded
 {
@@ -98,9 +99,11 @@ namespace Reloaded
             var task16d = new TaskClass16d();
             task16d.Test();
 
-            new TaskClass16e().Test();*/
+            new TaskClass16e().Test();
 
-            new TaskClass16fSandbox().Test();
+            new TaskClass16fSandbox().Test();*/
+
+            new TaskClass17().Test();
 
             Console.ReadKey();           
 

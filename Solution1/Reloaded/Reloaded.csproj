@@ -97,6 +97,10 @@
     <Compile Include="Tasks\Task16\ConstructorAndInstantiationExamples.cs" />
     <Compile Include="Tasks\Task16\Rectangle.cs" />
     <Compile Include="Tasks\Task16\TaskClass16.cs" />
+    <Compile Include="Tasks\Task17\Circle.cs" />
+    <Compile Include="Tasks\Task17\IScalable.cs" />
+    <Compile Include="Tasks\Task17\Rectangle.cs" />
+    <Compile Include="Tasks\Task17\TaskClass17.cs" />
     <Compile Include="Tasks\Task1\TaskClass1.cs" />
     <Compile Include="Tasks\Task26\TaskClass26a.cs" />
     <Compile Include="Tasks\Task26\TaskClass26b.cs" />
